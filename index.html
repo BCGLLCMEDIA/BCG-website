@@ -8,21 +8,27 @@
 
   <meta
     name="description"
-    content="Burkley Creative Group, LLC provides creative media, photography, design, documentation, and operational support services."
+    content="Burkley Creative Group, LLC provides photography, media, design, documentation, and practical operational support for agencies, businesses, events, and public service teams."
   />
 
   <style>
     :root {
-      --navy: #0b1f3a;
-      --navy-soft: #132d52;
-      --orange: #c46a2b;
-      --orange-light: #e08a45;
-      --cream: #f6f1e8;
+      --navy: #071a33;
+      --navy-deep: #03101f;
+      --blue: #123a66;
+      --blue-soft: #1a4778;
+      --orange: #c76c2d;
+      --orange-light: #f09b54;
+      --cream: #f6efe6;
+      --paper: #fffaf2;
       --white: #ffffff;
-      --gray: #6f7782;
-      --dark: #101820;
-      --shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
-      --radius: 22px;
+      --ink: #121924;
+      --muted: #6a7280;
+      --line: rgba(7, 26, 51, 0.12);
+      --glass: rgba(255, 255, 255, 0.1);
+      --shadow: 0 30px 90px rgba(7, 26, 51, 0.24);
+      --soft-shadow: 0 18px 52px rgba(7, 26, 51, 0.12);
+      --radius: 30px;
     }
 
     * {
@@ -37,9 +43,10 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--dark);
+      color: var(--ink);
       background: var(--cream);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -47,25 +54,34 @@
       text-decoration: none;
     }
 
-    .site-header {
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(199, 108, 45, 0.16), transparent 28%),
+        radial-gradient(circle at 90% 18%, rgba(18, 58, 102, 0.16), transparent 30%),
+        linear-gradient(180deg, #fff8ef 0%, #f6efe6 48%, #fffaf2 100%);
+    }
+
+    .header {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      top: 18px;
+      left: 50%;
       z-index: 1000;
-      background: rgba(11, 31, 58, 0.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      width: min(1180px, calc(100% - 32px));
+      transform: translateX(-50%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(7, 26, 51, 0.9);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(18px);
     }
 
     .nav {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+      padding: 12px 14px 12px 18px;
     }
 
     .brand {
@@ -73,51 +89,94 @@
       align-items: center;
       gap: 12px;
       color: var(--white);
-      font-weight: 800;
-      letter-spacing: 0.04em;
+      font-weight: 950;
+      letter-spacing: 0.045em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
       color: var(--navy);
-      font-weight: 900;
-      box-shadow: 0 8px 24px rgba(196, 106, 43, 0.35);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 42%),
+        linear-gradient(135deg, var(--orange), var(--orange-light));
+      box-shadow: 0 14px 30px rgba(199, 108, 45, 0.34);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 0.94rem;
+      gap: 4px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .nav-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--orange-light);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links .nav-button {
+      color: var(--white);
+      background: var(--orange);
+      box-shadow: 0 12px 28px rgba(199, 108, 45, 0.32);
     }
 
     .hero {
+      position: relative;
       min-height: 100vh;
-      padding: 150px 24px 90px;
-      background:
-        radial-gradient(circle at top right, rgba(196, 106, 43, 0.35), transparent 32%),
-        linear-gradient(135deg, var(--navy), #061221 72%);
+      padding: 150px 24px 82px;
       color: var(--white);
-      display: flex;
-      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(112deg, rgba(7, 26, 51, 0.98), rgba(7, 26, 51, 0.82) 54%, rgba(7, 26, 51, 0.96)),
+        radial-gradient(circle at 78% 26%, rgba(240, 155, 84, 0.33), transparent 30%),
+        linear-gradient(135deg, var(--navy), var(--blue-soft));
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+    }
+
+    .hero::after {
+      content: "BCG";
+      position: absolute;
+      right: -3vw;
+      bottom: -7vw;
+      font-size: clamp(11rem, 28vw, 30rem);
+      font-weight: 950;
+      letter-spacing: -0.13em;
+      color: rgba(255, 255, 255, 0.035);
+      line-height: 0.8;
     }
 
     .hero-inner {
-      max-width: 1160px;
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
       gap: 54px;
       align-items: center;
     }
@@ -125,37 +184,35 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       color: var(--orange-light);
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
       font-size: 0.78rem;
-      margin-bottom: 18px;
+      font-weight: 950;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
     .eyebrow::before {
       content: "";
-      width: 38px;
-      height: 2px;
+      width: 46px;
+      height: 3px;
+      border-radius: 999px;
       background: var(--orange-light);
     }
 
     .hero h1 {
-      font-size: clamp(2.6rem, 7vw, 5.8rem);
-      line-height: 0.96;
-      letter-spacing: -0.06em;
-      margin-bottom: 26px;
+      max-width: 850px;
+      font-size: clamp(3.2rem, 7vw, 6.9rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+      margin-bottom: 28px;
     }
 
-    .hero h1 span {
-      color: var(--orange-light);
-    }
-
-    .hero p {
-      max-width: 680px;
-      font-size: clamp(1.05rem, 2vw, 1.28rem);
+    .hero-copy p {
+      max-width: 700px;
       color: rgba(255, 255, 255, 0.82);
+      font-size: clamp(1.05rem, 1.7vw, 1.28rem);
       margin-bottom: 34px;
     }
 
@@ -163,16 +220,17 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+      margin-bottom: 34px;
     }
 
     .button {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 13px 22px;
+      align-items: center;
+      min-height: 52px;
+      padding: 14px 24px;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 950;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
@@ -181,409 +239,772 @@
     }
 
     .button-primary {
-      background: var(--orange);
       color: var(--white);
-      box-shadow: 0 12px 28px rgba(196, 106, 43, 0.32);
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      box-shadow: 0 16px 36px rgba(199, 108, 45, 0.38);
     }
 
     .button-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.26);
       color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.06);
     }
 
-    .button-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 30px;
-    }
-
-    .hero-card h2 {
-      font-size: 1.4rem;
-      margin-bottom: 18px;
-    }
-
-    .hero-card ul {
-      list-style: none;
-      display: grid;
-      gap: 14px;
-    }
-
-    .hero-card li {
+    .trust-row {
       display: flex;
-      gap: 12px;
-      color: rgba(255, 255, 255, 0.82);
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .hero-card li::before {
-      content: "◆";
+    .trust-pill {
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.9rem;
+      font-weight: 850;
+    }
+
+    .feature-panel {
+      position: relative;
+      padding: 18px;
+      border-radius: 36px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .feature-panel::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 26px;
+      background:
+        linear-gradient(135deg, rgba(240, 155, 84, 0.16), transparent 42%),
+        rgba(255, 255, 255, 0.06);
+      pointer-events: none;
+    }
+
+    .feature-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .feature-title {
+      padding: 18px 18px 4px;
+    }
+
+    .feature-title small {
+      display: block;
       color: var(--orange-light);
-      font-size: 0.78rem;
-      margin-top: 4px;
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
     }
 
-    section {
-      padding: 86px 24px;
+    .feature-title h2 {
+      font-size: 1.55rem;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .feature-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(7, 26, 51, 0.36);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(240, 155, 84, 0.16);
+      color: var(--orange-light);
+      font-size: 1.25rem;
+    }
+
+    .feature-item h3 {
+      font-size: 1.04rem;
+      margin-bottom: 4px;
+    }
+
+    .feature-item p {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.94rem;
+      margin: 0;
+    }
+
+    .section {
+      padding: 96px 24px;
     }
 
     .section-inner {
-      max-width: 1160px;
+      width: min(1180px, 100%);
       margin: 0 auto;
     }
 
     .section-heading {
-      max-width: 760px;
+      max-width: 790px;
       margin-bottom: 42px;
     }
 
+    .label {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 0.76rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
     .section-heading h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.04;
       color: var(--navy);
-      margin-bottom: 16px;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.2rem, 4.4vw, 4.15rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      margin-bottom: 18px;
     }
 
     .section-heading p {
-      color: var(--gray);
-      font-size: 1.06rem;
+      color: var(--muted);
+      font-size: 1.08rem;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 22px;
+      align-items: stretch;
+    }
+
+    .services-intro {
+      min-height: 100%;
+      padding: 34px;
+      border-radius: var(--radius);
+      color: var(--white);
+      background:
+        radial-gradient(circle at 86% 16%, rgba(240, 155, 84, 0.32), transparent 28%),
+        linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: var(--shadow);
+    }
+
+    .services-intro h3 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 22px;
+    }
+
+    .services-intro p {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 1.02rem;
+      margin-bottom: 18px;
+    }
+
+    .service-stack {
+      display: grid;
+      gap: 16px;
     }
 
     .service-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: 0 14px 36px rgba(16, 24, 32, 0.08);
-      border: 1px solid rgba(11, 31, 58, 0.06);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      padding: 24px;
+      border-radius: 26px;
+      background: rgba(255, 250, 242, 0.9);
+      border: 1px solid var(--line);
+      box-shadow: var(--soft-shadow);
     }
 
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: rgba(196, 106, 43, 0.12);
-      color: var(--orange);
+    .service-number {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
-      font-size: 1.35rem;
-      margin-bottom: 20px;
+      color: var(--white);
+      background: var(--orange);
+      font-weight: 950;
     }
 
     .service-card h3 {
       color: var(--navy);
-      font-size: 1.22rem;
-      margin-bottom: 10px;
+      font-size: 1.25rem;
+      line-height: 1.1;
+      margin-bottom: 8px;
     }
 
     .service-card p {
-      color: var(--gray);
-      font-size: 0.98rem;
+      color: var(--muted);
     }
 
-    .about {
-      background: var(--white);
+    .dark-section {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+    }
+
+    .dark-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(240, 155, 84, 0.3), transparent 24%),
+        radial-gradient(circle at 90% 74%, rgba(26, 71, 120, 0.6), transparent 32%);
+      opacity: 0.9;
     }
 
     .about-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 42px;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
       align-items: center;
     }
 
-    .about-panel {
-      background: var(--navy);
-      color: var(--white);
-      border-radius: var(--radius);
-      padding: 34px;
-      box-shadow: var(--shadow);
-      min-height: 340px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .about-panel::after {
-      content: "BCG";
-      position: absolute;
-      right: -12px;
-      bottom: -42px;
-      font-size: 8rem;
-      font-weight: 900;
-      color: rgba(255, 255, 255, 0.05);
-      letter-spacing: -0.08em;
-    }
-
-    .about-panel h3 {
-      font-size: 1.6rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-panel p {
-      color: rgba(255, 255, 255, 0.75);
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-content h2 {
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      color: var(--navy);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+    .about-copy h2 {
+      font-size: clamp(2.3rem, 4.4vw, 4.3rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
       margin-bottom: 20px;
     }
 
-    .about-content p {
-      color: var(--gray);
+    .about-copy p {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 1.06rem;
       margin-bottom: 18px;
-      font-size: 1.04rem;
     }
 
-    .highlight-line {
-      border-left: 4px solid var(--orange);
-      padding-left: 18px;
-      color: var(--navy);
-      font-weight: 800;
+    .about-copy .label {
+      color: var(--orange-light);
+    }
+
+    .quote {
       margin-top: 26px;
-    }
-
-    .cta {
-      background:
-        linear-gradient(rgba(11, 31, 58, 0.92), rgba(11, 31, 58, 0.92)),
-        radial-gradient(circle at bottom left, rgba(196, 106, 43, 0.4), transparent 35%);
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--white);
-      text-align: center;
+      font-weight: 900;
     }
 
-    .cta .section-inner {
-      max-width: 860px;
+    .identity-card {
+      padding: 34px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      box-shadow: var(--shadow);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .cta h2 {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1.04;
-      letter-spacing: -0.05em;
-      margin-bottom: 18px;
+    .identity-card strong {
+      display: block;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.82;
+      letter-spacing: -0.1em;
+      color: rgba(255, 255, 255, 0.92);
     }
 
-    .cta p {
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 1.12rem;
+    .identity-card span {
+      color: var(--orange-light);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      padding: 28px;
+      border-radius: var(--radius);
+      color: var(--white);
+      background: linear-gradient(135deg, var(--navy), var(--blue-soft));
+      box-shadow: var(--soft-shadow);
+    }
+
+    .work-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 22% 20%, rgba(240, 155, 84, 0.38), transparent 26%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 45%);
+    }
+
+    .work-card h3,
+    .work-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .work-card h3 {
+      font-size: 1.45rem;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .work-card p {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .process-band {
+      padding: 88px 24px;
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .process-grid {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .process-step {
+      padding: 24px;
+      border-radius: 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 36px rgba(7, 26, 51, 0.08);
+    }
+
+    .process-step small {
+      display: block;
+      color: var(--orange);
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .process-step h3 {
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.15;
+    }
+
+    .process-step p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .contact {
+      padding: 102px 24px;
+    }
+
+    .contact-panel {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      border-radius: 38px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 90% 8%, rgba(240, 155, 84, 0.35), transparent 26%),
+        linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: var(--shadow);
+    }
+
+    .contact-main {
+      padding: 50px;
+    }
+
+    .contact-main .label {
+      color: var(--orange-light);
+    }
+
+    .contact-main h2 {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      margin-bottom: 20px;
+    }
+
+    .contact-main p {
+      max-width: 660px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 1.08rem;
       margin-bottom: 30px;
     }
 
-    .contact-list {
+    .contact-info {
+      padding: 50px;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
       gap: 14px;
-      margin-top: 26px;
-      color: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.07);
+      border-left: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .contact-pill {
-      padding: 10px 16px;
-      border-radius: 999px;
+    .info-card {
+      padding: 18px;
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .info-card small {
+      display: block;
+      color: var(--orange-light);
+      font-size: 0.7rem;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .info-card span {
+      color: rgba(255, 255, 255, 0.86);
+      font-weight: 850;
     }
 
     .footer {
-      background: #061221;
+      padding: 30px 24px;
       color: rgba(255, 255, 255, 0.68);
-      padding: 28px 24px;
       text-align: center;
+      background: #06111f;
       font-size: 0.92rem;
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 980px) {
+      .header {
+        top: 10px;
+        width: calc(100% - 20px);
+        border-radius: 24px;
+      }
+
       .nav {
         align-items: flex-start;
+      }
+
+      .brand {
+        white-space: normal;
+        line-height: 1.1;
       }
 
       .nav-links {
         display: none;
       }
 
-      .hero-inner,
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
       .hero {
-        padding-top: 130px;
+        padding-top: 128px;
+      }
+
+      .hero-inner,
+      .services-grid,
+      .about-grid,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .work-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        border-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 14vw, 4.6rem);
+      }
+
+      .section,
+      .contact,
+      .process-band {
+        padding: 74px 18px;
+      }
+
+      .feature-content,
+      .contact-main,
+      .contact-info {
+        padding: 24px;
+      }
+
+      .service-card {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Burkley Creative Group home">
-        <span class="brand-mark">B</span>
-        <span>Burkley Creative Group</span>
-      </a>
-
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <div class="eyebrow">Creative. Practical. Built with purpose.</div>
-
-          <h1>Media, design, and operational support for people who do real work.<span></span></h1>
-
-          <p>
-            Burkley Creative Group, LLC brings together photography, visual storytelling, practical documentation,
-            brand support, and custom operational tools for agencies, businesses, events, and public service teams.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Start a Project</a>
-            <a class="button button-secondary" href="#services">View Services</a>
-          </div>
-        </div>
-
-        <aside class="hero-card" aria-label="Featured services">
-          <h2>What we help with</h2>
-
-          <ul>
-            <li>Photography and event coverage for agencies, businesses, and community organizations.</li>
-            <li>Brand visuals, print materials, digital assets, and clear public-facing communication.</li>
-            <li>Custom documentation, forms, workflow tools, and practical systems that make operations cleaner.</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="section-inner">
-        <div class="section-heading">
-          <h2>A creative company with a toolbox, not just a mood board.</h2>
-
-          <p>
-            We blend design sense, operational experience, technical problem-solving, and field-tested communication.
-            Pretty is good. Useful is better. Both is the sweet spot.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon">📷</div>
-
-            <h3>Photography & Media</h3>
-
-            <p>
-              Event photography, first responder and agency coverage, professional portraits, community storytelling,
-              and clean image delivery for web, print, and social use.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">✦</div>
-
-            <h3>Brand & Design Support</h3>
-
-            <p>
-              Logos, brochures, flyers, social graphics, business materials, presentation visuals, and design systems
-              that feel polished without becoming corporate wallpaper.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">⚙</div>
-
-            <h3>Systems & Documentation</h3>
-
-            <p>
-              Custom forms, workflow documents, training materials, operational reports, and practical tools built for
-              teams that need clarity, consistency, and fewer headaches.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="about">
-      <div class="section-inner about-grid">
-        <div class="about-panel">
-          <h3>Built at the intersection of creativity, service, and problem-solving.</h3>
-
-          <p>
-            Burkley Creative Group is the parent company behind creative and operational work including RJB3 Photography.
-          </p>
-        </div>
-
-        <div class="about-content">
-          <h2>We make things clearer, sharper, and easier to use.</h2>
-
-          <p>
-            The work here is grounded in real-world experience: public service, law enforcement, operations,
-            technical systems, training, creative production, and visual communication.
-          </p>
-
-          <p>
-            That means every project gets treated like more than decoration. A brochure should explain. A photo should
-            tell the truth. A form should make sense. A workflow should survive actual humans using it on a Monday morning.
-          </p>
-
-          <div class="highlight-line">
-            Clean visuals. Strong communication. Practical systems. No fluff dressed in a blazer.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="cta">
-      <div class="section-inner">
-        <h2>Have a project, event, agency need, or strange little operational monster?</h2>
-
-        <p>
-          Let’s talk. Whether you need photography, branding, documents, forms, or a cleaner way to present your work,
-          Burkley Creative Group can help shape it into something solid.
-        </p>
-
-        <a class="button button-primary" href="mailto:info@burkleycreativegroup.com">
-          Contact Burkley Creative Group
+  <div class="page">
+    <header class="header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Burkley Creative Group home">
+          <span class="brand-mark">B</span>
+          <span>Burkley Creative Group</span>
         </a>
 
-        <div class="contact-list" aria-label="Contact information">
-          <span class="contact-pill">info@burkleycreativegroup.com</span>
-          <span class="contact-pill">burkleycreativegroup.com</span>
-          <span class="contact-pill">Pennsylvania based</span>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#process">Process</a>
+          <a class="nav-button" href="#contact">Start a Project</a>
         </div>
-      </div>
-    </section>
-  </main>
+      </nav>
+    </header>
 
-  <footer class="footer">
-    <p>© 2026 Burkley Creative Group, LLC. All rights reserved.</p>
-  </footer>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="eyebrow">Creative work with practical muscle</div>
+
+            <h1>Media, design, and systems for people who do real work.</h1>
+
+            <p>
+              Burkley Creative Group, LLC creates sharp visuals, clear documents, field-ready media, and practical tools for agencies, businesses, events, and public service teams.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact">Start a Project</a>
+              <a class="button button-secondary" href="#services">Explore Services</a>
+            </div>
+
+            <div class="trust-row" aria-label="Company strengths">
+              <span class="trust-pill">Photography</span>
+              <span class="trust-pill">Brand Design</span>
+              <span class="trust-pill">Reports</span>
+              <span class="trust-pill">Operational Tools</span>
+            </div>
+          </div>
+
+          <aside class="feature-panel" aria-label="Featured capabilities">
+            <div class="feature-content">
+              <div class="feature-title">
+                <small>Capability Stack</small>
+                <h2>Creative polish, operational discipline, and enough common sense to survive daylight.</h2>
+              </div>
+
+              <article class="feature-item">
+                <div class="feature-icon">📷</div>
+                <div>
+                  <h3>Photography and media</h3>
+                  <p>Event coverage, agency imagery, portraits, and visual storytelling with purpose.</p>
+                </div>
+              </article>
+
+              <article class="feature-item">
+                <div class="feature-icon">✦</div>
+                <div>
+                  <h3>Design and communication</h3>
+                  <p>Brand assets, brochures, graphics, and public-facing material that reads clean.</p>
+                </div>
+              </article>
+
+              <article class="feature-item">
+                <div class="feature-icon">⚙</div>
+                <div>
+                  <h3>Systems and documentation</h3>
+                  <p>Forms, reports, workflows, and tools made for real teams under real pressure.</p>
+                </div>
+              </article>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="section-inner">
+          <div class="section-heading">
+            <span class="label">Services</span>
+            <h2>Useful work, sharp visuals, cleaner operations.</h2>
+            <p>
+              The goal is not decoration. The goal is clarity, credibility, and work that helps people move faster without looking like a template had a midlife crisis.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <div class="services-intro">
+              <h3>Not just creative. Capable.</h3>
+              <p>
+                BCG blends photography, design, documentation, and systems thinking into one practical creative shop.
+              </p>
+              <p>
+                That means the work can look good, explain clearly, and hold up when actual humans need to use it.
+              </p>
+            </div>
+
+            <div class="service-stack">
+              <article class="service-card">
+                <div class="service-number">01</div>
+                <div>
+                  <h3>Photography and Media</h3>
+                  <p>Professional imagery for events, agencies, first responders, teams, campaigns, websites, and social media.</p>
+                </div>
+              </article>
+
+              <article class="service-card">
+                <div class="service-number">02</div>
+                <div>
+                  <h3>Brand and Design Support</h3>
+                  <p>Logos, brochures, flyers, social graphics, presentations, and branded materials with a clean visual standard.</p>
+                </div>
+              </article>
+
+              <article class="service-card">
+                <div class="service-number">03</div>
+                <div>
+                  <h3>Systems and Documentation</h3>
+                  <p>Operational reports, release forms, training material, workflow documents, and custom support tools.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="dark-section section">
+        <div class="section-inner about-grid">
+          <div class="about-copy">
+            <span class="label">About BCG</span>
+            <h2>Built from public service, technical work, leadership, and creative instinct.</h2>
+            <p>
+              Burkley Creative Group is the parent company behind creative and operational work including RJB3 Photography. The work is shaped by real experience, not vague branding smoke and a stock photo handshake.
+            </p>
+            <p>
+              Every project gets treated like a tool. A photo should tell the truth. A brochure should explain the offer. A report should make sense. A system should help the person using it.
+            </p>
+            <div class="quote">Clear visuals. Strong communication. Practical systems. No fluff in a rented suit.</div>
+          </div>
+
+          <aside class="identity-card" aria-label="Brand statement">
+            <strong>Real work deserves <span>real</span> craft.</strong>
+            <p>BCG creates media, design, and operational support with clarity, grit, and purpose.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="work" class="section">
+        <div class="section-inner">
+          <div class="section-heading">
+            <span class="label">Focus Areas</span>
+            <h2>Three lanes, one standard.</h2>
+            <p>
+              BCG supports creative media, operational tools, and professional communication under one clean roof.
+            </p>
+          </div>
+
+          <div class="work-grid">
+            <article class="work-card">
+              <h3>RJB3 Photography</h3>
+              <p>Photography for events, agencies, first responders, portraits, and community stories.</p>
+            </article>
+
+            <article class="work-card">
+              <h3>OpsPanel</h3>
+              <p>Operational ideas, employee records, reports, dashboards, and practical workflow tools.</p>
+            </article>
+
+            <article class="work-card">
+              <h3>Creative Documents</h3>
+              <p>Forms, releases, proposals, reports, brochures, and polished business materials.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="process-band">
+        <div class="process-grid">
+          <article class="process-step">
+            <small>Step 01</small>
+            <h3>Clarify the goal</h3>
+            <p>We figure out what the work needs to do before making it pretty.</p>
+          </article>
+
+          <article class="process-step">
+            <small>Step 02</small>
+            <h3>Build the structure</h3>
+            <p>We organize the message, materials, visuals, or workflow so the project has a spine.</p>
+          </article>
+
+          <article class="process-step">
+            <small>Step 03</small>
+            <h3>Design the result</h3>
+            <p>We shape the final piece so it looks professional, reads clean, and works in the real world.</p>
+          </article>
+
+          <article class="process-step">
+            <small>Step 04</small>
+            <h3>Deliver with purpose</h3>
+            <p>You get finished work that is ready to use, share, print, present, or build from.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="contact-panel">
+          <div class="contact-main">
+            <span class="label">Contact</span>
+            <h2>Bring the rough idea. We will make it useful.</h2>
+            <p>
+              Need photography, branding, documents, forms, a small website, or a cleaner way to present your work? Send the idea. BCG will help shape it into something solid.
+            </p>
+            <a class="button button-primary" href="mailto:info@burkleycreativegroup.com">Contact Burkley Creative Group</a>
+          </div>
+
+          <aside class="contact-info" aria-label="Contact details">
+            <div class="info-card">
+              <small>Email</small>
+              <span>info@burkleycreativegroup.com</span>
+            </div>
+            <div class="info-card">
+              <small>Website</small>
+              <span>burkleycreativegroup.com</span>
+            </div>
+            <div class="info-card">
+              <small>Based In</small>
+              <span>Pennsylvania</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Burkley Creative Group, LLC. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
