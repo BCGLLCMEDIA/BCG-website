@@ -96,9 +96,9 @@
     }
 
     .brand-mark {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
+      width: 70px;
+      height: 70px;
+      border-radius: 22px;
       display: grid;
       place-items: center;
       background: rgba(255, 250, 242, 0.96);
@@ -108,7 +108,7 @@
     }
 
     .brand-logo {
-      width: 48px;
+      width: 62px;
       height: auto;
       display: block;
     }
@@ -186,8 +186,8 @@
 
     .hero {
       position: relative;
-      min-height: 100vh;
-      padding: 108px 24px 82px;
+      min-height: auto;
+      padding: 112px 24px 64px;
       color: var(--white);
       overflow: hidden;
       background:
@@ -206,18 +206,6 @@
         linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
       background-size: 70px 70px;
       mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
-    }
-
-    .hero::after {
-      content: "BCG";
-      position: absolute;
-      right: -3vw;
-      bottom: -7vw;
-      font-size: clamp(11rem, 28vw, 30rem);
-      font-weight: 950;
-      letter-spacing: -0.13em;
-      color: rgba(255, 255, 255, 0.035);
-      line-height: 0.8;
     }
 
     .hero-inner {
@@ -394,7 +382,7 @@
     }
 
     .section {
-      padding: 96px 24px;
+      padding: 84px 24px;
     }
 
     .section-inner {
@@ -558,7 +546,7 @@
       background: rgba(255, 255, 255, 0.09);
       border: 1px solid rgba(255, 255, 255, 0.13);
       box-shadow: var(--shadow);
-      min-height: 420px;
+      min-height: 360px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -585,7 +573,7 @@
     .work-card {
       position: relative;
       overflow: hidden;
-      min-height: 280px;
+      min-height: 250px;
       padding: 28px;
       border-radius: var(--radius);
       color: var(--white);
@@ -619,7 +607,7 @@
     }
 
     .process-band {
-      padding: 88px 24px;
+      padding: 74px 24px;
       background: var(--paper);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -662,7 +650,7 @@
     }
 
     .contact {
-      padding: 102px 24px;
+      padding: 84px 24px;
     }
 
     .contact-panel {
@@ -757,6 +745,16 @@
         line-height: 1.1;
       }
 
+      .brand-mark {
+        width: 62px;
+        height: 62px;
+        border-radius: 19px;
+      }
+
+      .brand-logo {
+        width: 54px;
+      }
+
       .nav-links {
         display: none;
       }
@@ -766,7 +764,8 @@
       }
 
       .hero {
-        padding-top: 128px;
+        padding-top: 116px;
+        padding-bottom: 54px;
       }
 
       .hero-inner,
@@ -794,13 +793,13 @@
       }
 
       .hero h1 {
-        font-size: clamp(3rem, 14vw, 4.6rem);
+        font-size: clamp(2.35rem, 10vw, 3.4rem);
       }
 
       .section,
       .contact,
       .process-band {
-        padding: 74px 18px;
+        padding: 64px 18px;
       }
 
       .feature-content,
