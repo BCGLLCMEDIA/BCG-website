@@ -823,3 +823,19 @@
     border-radius: 16px;
   }
 }
+/* Portfolio image inset sizing */
+#portfolio .gallery-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #071a33 !important;
+}
+
+#portfolio .gallery-item img {
+  width: 82% !important;
+  height: 82% !important;
+  max-width: 82% !important;
+  max-height: 82% !important;
+  object-fit: contain !important;
+  margin: auto !important;
+}
