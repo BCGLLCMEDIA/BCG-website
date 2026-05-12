@@ -767,7 +767,7 @@
 /* Portfolio showcase gallery */
 #portfolio .gallery-grid {
   width: 100%;
-  max-width: 900px;
+  max-width: 860px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -776,24 +776,27 @@
 
 #portfolio .gallery-item {
   width: 100%;
-  height: 190px;
+  height: 180px;
   min-width: 0;
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--navy);
+  background: #071a33;
   box-shadow: var(--soft-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #portfolio .gallery-item img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.35s ease, filter 0.35s ease;
 }
 
 #portfolio .gallery-item:hover img {
-  transform: scale(1.04);
+  transform: scale(1.02);
   filter: contrast(1.04) saturate(1.04);
 }
 
@@ -804,7 +807,7 @@
   }
 
   #portfolio .gallery-item {
-    height: 165px;
+    height: 150px;
   }
 }
 
@@ -816,7 +819,7 @@
   }
 
   #portfolio .gallery-item {
-    height: 125px;
+    height: 115px;
     border-radius: 16px;
   }
 }
