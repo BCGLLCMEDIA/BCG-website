@@ -1014,3 +1014,37 @@ img {
     display: block;
   }
 }
+/* Portfolio preview captions */
+.portfolio-caption {
+  padding: 18px 6px 4px;
+  text-align: center;
+}
+
+.portfolio-caption h3 {
+  color: var(--navy);
+  font-size: 1.15rem;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.portfolio-caption p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 760px) {
+  .portfolio-caption {
+    padding: 14px 4px 2px;
+  }
+
+  .portfolio-caption h3 {
+    font-size: 1rem;
+  }
+
+  .portfolio-caption p {
+    font-size: 0.88rem;
+  }
+}
