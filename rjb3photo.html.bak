@@ -316,22 +316,7 @@
             <p>
               Send the details, date, location, type of coverage, and what the images need to accomplish. RJB3 Photography will help shape the plan.
             </p>
-            <div class="booking-form-embed">
-			  <iframe
-				src="https://docs.google.com/forms/d/e/1FAIpQLSdJHTQ451wWkO71IWJPXng_v3-72ZUm0vN_KtgJi0DDDcLZ3Q/viewform?embedded=true"
-				width="100%"
-				height="1100"
-				frameborder="0"
-				marginheight="0"
-				marginwidth="0"
-			  >
-				Loading…
-			  </iframe>
-			</div>
-
-			<a class="button button-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdJHTQ451wWkO71IWJPXng_v3-72ZUm0vN_KtgJi0DDDcLZ3Q/viewform?usp=publish-editor" target="_blank" rel="noopener">
-			  Open Booking Form in New Window
-			</a>
+            <a class="button button-primary" href="mailto:info@burkleycreativegroup.com?subject=RJB3%20Photography%20Inquiry">Contact RJB3 Photography</a>
           </div>
 
           <aside class="contact-info" aria-label="Contact details">
